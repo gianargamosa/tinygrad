@@ -174,7 +174,7 @@ if __name__ == "__main__":
     import cv2
     cap = cv2.VideoCapture(0)
     SCALE = 3
-
+  
     while 1:
       ret, frame = cap.read()
       frame = Image.fromarray(frame[:, :, [2,1,0]])
@@ -183,7 +183,6 @@ if __name__ == "__main__":
       cv2.imshow('capture', simg)
 
       print(np.argmax(out.data), np.max(out.data), lbls[np.argmax(out.data)])
-
       if cv2.waitKey(1) & 0xFF == ord('q'):
         break
     cap.release()
