@@ -180,6 +180,7 @@ if __name__ == "__main__":
       frame = Image.fromarray(frame[:, :, [2,1,0]])
       out, retimage = infer(model, frame)
       simg = cv2.resize(retimage, (224*SCALE, 224*SCALE))
+      simg = cv2.cvtColor(simg, cv2.COLOR_RGB2BGR)
       cv2.imshow('capture', simg)
 
       print(np.argmax(out.data), np.max(out.data), lbls[np.argmax(out.data)])
